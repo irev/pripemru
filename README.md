@@ -1,4 +1,4 @@
-# Sistem Permohonan Izin Pemanfaatan atau Informasi Tata Ruang #
+# Sistem Permohonan Izin Pemanfaatan atau Informasi Tata Ruang DPUPR Pasaman Barat #
 
 ## About : ##
 
