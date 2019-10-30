@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Perusahaan extends CI_Controller
+class Perusahaan extends Auth_Controller
 {
     function __construct()
     {

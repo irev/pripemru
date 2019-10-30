@@ -1,5 +1,5 @@
 
-        <h2 style="margin-top:0px">Perusahaan List</h2>
+        <h2 style="margin-top:0px">Daftar Perusahaan</h2>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
                 <?php echo anchor(site_url('perusahaan/create'),'Create', 'class="btn btn-primary"'); ?>
@@ -33,10 +33,10 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <th>No</th>
-		<th>NmPeru</th>
-		<th>AlamatPeru</th>
-		<th>NpwpPeru</th>
-		<th>Action</th>
+        		<th>Perusahaan</th>
+        		<th>Alamat</th>
+        		<th>NPWP</th>
+        		<th>Action</th>
             </tr><?php
             foreach ($perusahaan_data as $perusahaan)
             {

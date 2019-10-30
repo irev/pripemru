@@ -18,6 +18,10 @@ class Data_permohonan_model extends CI_Model
     // get all
     function get_all()
     {
+        if($this->session->userdata('level')==='user'){
+            $userid = $this->session->userdata('iduser');
+             $this->db->where('userid', $userid);
+        }
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
     }

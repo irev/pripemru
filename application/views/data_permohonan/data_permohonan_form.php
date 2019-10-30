@@ -1,8 +1,20 @@
-        
+                <h2 style="margin-top:0px">Informasi Lahan</h2>
+        <table class="table">
+        <tr><td>Pemohon</td><td><?php echo $this->Perusahaan_model->get_data_by($peruID, 'nmPeru'); ?></td></tr>
+        <tr><td>Luas Lahan</td><td><?php echo $luasLahan; ?></td></tr>
+        <tr><td>Status Pemilik</td><td><?php echo $statusPemilik; ?></td></tr>
+        <tr><td>Nama Pemilik</td><td><?php echo $nmPemilik; ?></td></tr>
+        <tr><td>Nomor Sertifikat</td><td><?php echo $nmrSertifikat; ?></td></tr>
+        <tr><td>Atas Nama</td><td><?php echo $atasNama; ?></td></tr>
+        <tr><td>Nagari</td><td><?php echo $nagari; ?></td></tr>
+        <tr><td>Kecamatan</td><td><?php echo $kecamatan; ?></td></tr>
+        <tr><td>Letak Lahan</td><td><?php echo $letakLahan; ?></td></tr>
+    </table>
+  
 
         <link rel="stylesheet" href="<?= base_url() ?>asset/theme/assets/css/bootstrap-multiselect.min.css" />
         <link rel="stylesheet" href="<?= base_url() ?>asset/theme/assets/css/select2.min.css" />
-        <h2 style="margin-top:0px"><?php echo $button ?> Data Permohonan </h2>
+        <h2 style="margin-top:0px"><?php echo $button ?> Verifikasi Data Permohonan </h2>
         <div class="alert alert-info">
                                     <button class="close" data-dismiss="alert">
                                         <i class="ace-icon fa fa-times"></i>
@@ -27,7 +39,7 @@
         </div>
                 
 
-            
+
 	    <div class="form-group hidden">
             <label for="int">RuangID <?php echo form_error('RuangID') ?></label>
             <input type="text" class="form-control" name="RuangID" id="RuangID" placeholder="RuangID" value="<?php echo $RuangID; ?>" />
@@ -51,7 +63,7 @@
         </div>
 	    <div class="form-group">
             <label for="longtext">Json Status <?php echo form_error('json_status') ?></label>
-            <input type="text" class="form-control" name="json_status" id="json_status" placeholder="Json Status" value="<?php echo $json_status; ?>" />
+            <input type="text" class="form-control" name="json_status" id="json_status" placeholder="Json Status" value="<?php echo $json_status; ?>" readonly/>
         </div>
                                                            
         <div>
@@ -88,8 +100,7 @@
         $('#json_status').val(quotations);
     });
 
-
-var json_status = <?= htmlspecialchars_decode($json_status, ENT_QUOTES) ?>;
+var json_status = <?= (strlen($json_status) >1 )? htmlspecialchars_decode($json_status, ENT_QUOTES) : "{}"; ?>;
 $.each(json_status, function(key, value){
     console.log(key, value);
     $('#'+key).prop('checked', true);

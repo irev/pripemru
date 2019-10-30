@@ -8,7 +8,7 @@
         }
     }
 </script>
-        <h2 style="margin-top:0px">Data_permohonan List</h2>
+        <h2 style="margin-top:0px">Data Permohonan</h2>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
                 <?php echo anchor(site_url('data_permohonan/create'),'Create', 'class="btn btn-primary"'); ?>
@@ -42,11 +42,11 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <th>No</th>
-		<th>RuangID</th>
-		<th>PerusID</th>
-		<th>Status</th>
-		<th>Dokumen</th>
-		<th>Action</th>
+        		<th>RuangID</th>
+        		<th>PerusID</th>
+        		<th>Status</th>
+        		<th>Dokumen</th>
+        		<th>Action</th>
             </tr><?php
             $no=1;
             foreach ($data_permohonan_data as $data_permohonan)
@@ -74,7 +74,7 @@
 				<?php 
 				echo anchor(site_url('data_permohonan/read/'.$data_permohonan->id),'Read'); 
 				echo ' | '; 
-				echo anchor(site_url('data_permohonan/update/'.$data_permohonan->id),'Update'); 
+				echo anchor(site_url('data_permohonan/update_validasi/'.$data_permohonan->id.'/'. $data_permohonan->RuangID.'/'.$data_permohonan->type),'Update'); 
 				echo ' | '; 
 				echo anchor(site_url('data_permohonan/delete/'.$data_permohonan->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
 				?>

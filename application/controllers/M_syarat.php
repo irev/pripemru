@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class M_syarat extends CI_Controller
+class M_syarat extends Auth_Controller
 {
     function __construct()
     {

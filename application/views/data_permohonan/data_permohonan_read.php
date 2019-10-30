@@ -1,5 +1,5 @@
 
-        <h2 style="margin-top:0px">Data_permohonan Read</h2>
+     <h2 style="margin-top:0px">Data_permohonan Read</h2>
         <table class="table">
 	    <tr><td>RuangID</td><td><?php echo $RuangID; ?></td></tr>
 	    <tr><td>PerusID</td><td><?= $this->Perusahaan_model->get_data_by($PerusID, 'nmPeru') ?></td></tr>

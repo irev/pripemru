@@ -14,8 +14,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<?php if(ENVIRONMENT === 'development'){ ?>
 								ENVIRONMENT= <?= ENVIRONMENT ?>	<br>
 								<br>
-								last_query = <?= $this->db->last_query() ?><br>
+								last_query = <?= $this->db->last_query() ?><br><br>
+								<?= print_r($this->session->userdata()) ?><br><br>
+								<?= print_r(session_encode()) ?>
 								<?php } ?>
+
 							
 </div>
 			<div class="footer noprint">

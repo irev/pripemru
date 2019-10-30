@@ -66,7 +66,7 @@
 				echo ' | '; 
 				echo anchor(site_url('ruang/update/'.$ruang->idRuang),'Update'); 
 				echo ' | '; 
-                echo anchor(site_url('data_permohonan/create/'.$ruang->idRuang.'/'.$ruang->peruID.'/'.$ruang->type),'Validasi'); 
+                echo anchor(site_url('data_permohonan/create_validasi/'.$ruang->idRuang.'/'.$ruang->peruID.'/'.$ruang->type),'Validasi'); 
                 echo ' | '; 
 				echo anchor(site_url('ruang/delete/'.$ruang->idRuang),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
 				?>

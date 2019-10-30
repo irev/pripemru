@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-defined('_APLIKASI_') OR define('_APLIKASI_', 'PERMOHONAN REKOMENDASI PUPR');
+defined('_APLIKASI_') OR define('_APLIKASI_', '(SIMPRITA) PERMOHONAN REKOMENDASI PUPR');
 defined('_VERSI_') OR define('_VERSI_', 'Versi 0.1');
 defined('_AUTHOR_') OR define('_AUTHOR_', 'MEEDUN');
 defined('_COPYRIGTH_') OR define('_COPYRIGTH_', 'MEEDUN © 2019');

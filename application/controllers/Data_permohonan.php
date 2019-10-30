@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Data_permohonan extends CI_Controller
+class Data_permohonan extends Auth_Controller
 {
     function __construct()
     {
@@ -64,17 +64,65 @@ class Data_permohonan extends CI_Controller
 
     public function create() 
     {
-        $data = array(
-            'button' => 'INPUT',
-            'action' => site_url('data_permohonan/create_action/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$this->uri->segment(5)),
-            'id' => set_value('id'),
-            'RuangID' => $this->uri->segment(3),//set_value('RuangID'),
-            'PerusID' => $this->uri->segment(4),//set_value('PerusID'),
-            'status' => set_value('status'),
-            'type' => $this->uri->segment(5) ,//set_value('type'),
-            'json_status' => set_value('json_status'),
-            'syarat' => $this->M_syarat_model->typeSyarat($this->uri->segment(5)),
-	    );
+        //// informasi kepemilikan 
+        $ids = $this->uri->segment(4);
+        $row = $this->Ruang_model->get_by_id($ids);
+        if ($row) {
+            $data = array(
+                'idRuang'       => $row->idRuang,
+                'peruID'        => $row->peruID,
+                'luasLahan'     => $row->luasLahan,
+                'statusPemilik' => $row->statusPemilik,
+                'nmPemilik'     => $row->nmPemilik,
+                'nmrSertifikat' => $row->nmrSertifikat,
+                'atasNama'      => $row->atasNama,
+                'nagari'        => $row->nagari,
+                'kecamatan'     => $row->kecamatan,
+                'letakLahan'    => $row->letakLahan,
+                ///
+                'button'      => 'INPUT',
+                'action'      => site_url('data_permohonan/create_action/'.$this->uri->segment(4).'/'.$this->uri->segment(5).'/'.$this->uri->segment(6)),
+                'id'          => set_value('id'),
+                'RuangID'     => $this->uri->segment(4),//set_value('RuangID'),
+                'PerusID'     => $this->uri->segment(5),//set_value('PerusID'),
+                'status'      => set_value('status'),
+                'type'        => $this->uri->segment(6) ,//set_value('type'),
+                'json_status' => set_value('json_status'),
+                'syarat'      => $this->M_syarat_model->typeSyarat($this->uri->segment(6)),
+                );
+        }
+        $this->template->load('template_load','data_permohonan/data_permohonan_form', $data);
+    }
+
+    public function create_validasi() 
+    {
+        //// informasi kepemilikan 
+        $ids = $this->uri->segment(3);
+        $row = $this->Ruang_model->get_by_id($ids);
+        if ($row) {
+            $data = array(
+                'idRuang'       => $row->idRuang,
+                'peruID'        => $row->peruID,
+                'luasLahan'     => $row->luasLahan,
+                'statusPemilik' => $row->statusPemilik,
+                'nmPemilik'     => $row->nmPemilik,
+                'nmrSertifikat' => $row->nmrSertifikat,
+                'atasNama'      => $row->atasNama,
+                'nagari'        => $row->nagari,
+                'kecamatan'     => $row->kecamatan,
+                'letakLahan'    => $row->letakLahan,
+                ///
+                'button'      => 'INPUT',
+                'action'      => site_url('data_permohonan/create_action/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$this->uri->segment(5)),
+                'id'          => set_value('id'),
+                'RuangID'     => $this->uri->segment(3),//set_value('RuangID'),
+                'PerusID'     => $this->uri->segment(4),//set_value('PerusID'),
+                'status'      => set_value('status'),
+                'type'        => $this->uri->segment(5) ,//set_value('type'),
+                'json_status' => set_value('json_status'),
+                'syarat'      => $this->M_syarat_model->typeSyarat($this->uri->segment(5)),
+                );
+        }
         $this->template->load('template_load','data_permohonan/data_permohonan_form', $data);
     }
     
@@ -100,7 +148,42 @@ class Data_permohonan extends CI_Controller
         }
     }
     
-    public function update($id) 
+    public function update_validasi($id) 
+    {
+        $row = $this->Data_permohonan_model->get_by_id($id);
+        $ids = $this->uri->segment(4);
+        $row1 = $this->Ruang_model->get_by_id($ids);
+        if ($row) {
+            $data = array(
+                'idRuang'       => $row1->idRuang,
+                'peruID'        => $row1->peruID,
+                'luasLahan'     => $row1->luasLahan,
+                'statusPemilik' => $row1->statusPemilik,
+                'nmPemilik'     => $row1->nmPemilik,
+                'nmrSertifikat' => $row1->nmrSertifikat,
+                'atasNama'      => $row1->atasNama,
+                'nagari'        => $row1->nagari,
+                'kecamatan'     => $row1->kecamatan,
+                'letakLahan'    => $row1->letakLahan,
+
+                'button' => 'Update ',
+                'action' => site_url('data_permohonan/update_action'),
+                'id' => set_value('id', $row->id),
+                'RuangID' => set_value('RuangID', $row->RuangID),
+                'PerusID' => set_value('PerusID', $row->PerusID),
+                'status' => set_value('status', $row->status),
+                'type' => set_value('status', $row->type),
+                'json_status' => set_value('json_status', $row->json_status),
+                'syarat' => $this->M_syarat_model->typeSyarat($row->type),
+	    );
+            $this->template->load('template_load','data_permohonan/data_permohonan_form', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('data_permohonan'));
+        }
+    }
+
+     public function update($id) 
     {
         $row = $this->Data_permohonan_model->get_by_id($id);
 
@@ -115,7 +198,7 @@ class Data_permohonan extends CI_Controller
                 'type' => set_value('status', $row->type),
                 'json_status' => set_value('json_status', $row->json_status),
                 'syarat' => $this->M_syarat_model->typeSyarat($row->type),
-	    );
+        );
             $this->template->load('template_load','data_permohonan/data_permohonan_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

@@ -119,5 +119,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</style>
 	
 	</head>
-
+	<?php  if($this->session->userdata('level')==='user'){?>
+	<body class="skin-1" style="min-width: 620px !important;  overflow:auto;">
+     <?php   }else{ ?>
 	<body class="skin-2" style="min-width: 620px !important;  overflow:auto;">
+	<?php   } ?>

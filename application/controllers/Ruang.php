@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Ruang extends CI_Controller
+class Ruang extends Auth_Controller
 {
     function __construct()
     {
@@ -218,32 +218,37 @@ class Ruang extends CI_Controller
 
         $kolomhead = 0;
         xlsWriteLabel($tablehead, $kolomhead++, "No");
-    xlsWriteLabel($tablehead, $kolomhead++, "PeruID");
-	xlsWriteLabel($tablehead, $kolomhead++, "type");
-	xlsWriteLabel($tablehead, $kolomhead++, "LuasLahan");
-	xlsWriteLabel($tablehead, $kolomhead++, "StatusPemilik");
-	xlsWriteLabel($tablehead, $kolomhead++, "NmPemilik");
-	xlsWriteLabel($tablehead, $kolomhead++, "NmrSertifikat");
-	xlsWriteLabel($tablehead, $kolomhead++, "AtasNama");
-	xlsWriteLabel($tablehead, $kolomhead++, "Nagari");
-	xlsWriteLabel($tablehead, $kolomhead++, "Kecamatan");
-	xlsWriteLabel($tablehead, $kolomhead++, "LetakLahan");
+        xlsWriteLabel($tablehead, $kolomhead++, "PeruID");
+    	xlsWriteLabel($tablehead, $kolomhead++, "type");
+    	xlsWriteLabel($tablehead, $kolomhead++, "LuasLahan");
+    	xlsWriteLabel($tablehead, $kolomhead++, "StatusPemilik");
+    	xlsWriteLabel($tablehead, $kolomhead++, "NmPemilik");
+    	xlsWriteLabel($tablehead, $kolomhead++, "NmrSertifikat");
+    	xlsWriteLabel($tablehead, $kolomhead++, "AtasNama");
+    	xlsWriteLabel($tablehead, $kolomhead++, "Nagari");
+    	xlsWriteLabel($tablehead, $kolomhead++, "Kecamatan");
+    	xlsWriteLabel($tablehead, $kolomhead++, "LetakLahan");
+        xlsWriteLabel($tablehead, $kolomhead++, "Verivikasi");
+        xlsWriteLabel($tablehead, $kolomhead++, "TerakhirDicek");
+
 
 	foreach ($this->Ruang_model->get_all() as $data) {
             $kolombody = 0;
 
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
-        xlsWriteNumber($tablebody, $kolombody++, $data->peruID);
-	    xlsWriteNumber($tablebody, $kolombody++, $data->type);
-	    xlsWriteNumber($tablebody, $kolombody++, $data->luasLahan);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->statusPemilik);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->nmPemilik);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->nmrSertifikat);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->atasNama);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->nagari);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->kecamatan);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->letakLahan);
+            xlsWriteLabel($tablebody, $kolombody++, $data->nmPeru);
+            xlsWriteLabel($tablebody, $kolombody++, $data->type);
+    	    xlsWriteNumber($tablebody, $kolombody++, $data->luasLahan);
+    	    xlsWriteLabel($tablebody, $kolombody++, $data->statusPemilik);
+    	    xlsWriteLabel($tablebody, $kolombody++, $data->nmPemilik);
+    	    xlsWriteLabel($tablebody, $kolombody++, $data->nmrSertifikat);
+    	    xlsWriteLabel($tablebody, $kolombody++, $data->atasNama);
+    	    xlsWriteLabel($tablebody, $kolombody++, $data->nagari);
+    	    xlsWriteLabel($tablebody, $kolombody++, $data->kecamatan);
+            xlsWriteLabel($tablebody, $kolombody++, $data->letakLahan);
+            xlsWriteLabel($tablebody, $kolombody++, $data->cDate);
+    	    xlsWriteLabel($tablebody, $kolombody++, $data->uDate);
 
 	    $tablebody++;
             $nourut++;

@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<a class="btn btn-success" href="<?=  base_url('master/tujuan') ?>" title="Master Tujuan/Kota">
+						<!--a class="btn btn-success" href="<?=  base_url('master/tujuan') ?>" title="Master Tujuan/Kota">
 							<i class="ace-icon fa fa-map-marker"></i>
 						</a>
 
@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<i class="ace-icon fa fa-car"></i>
 						</a>
 
-						<!--button class="btn btn-danger">
+						<button class="btn btn-danger">
 							<i class="ace-icon fa fa-cogs"></i>
 						</button>
 						<button class="btn btn-danger">
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				<ul class="nav nav-list">
 					<li class="">
-						<a href="<?= base_url() ?>">
+						<a href="<?= base_url().'dashboard' ?>">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
